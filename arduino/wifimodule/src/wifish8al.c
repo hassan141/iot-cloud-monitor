@@ -12,24 +12,8 @@
   
 const char* ssid = "7asn";
 const char* password =  "barcelona";
-  
-void setup() {
-  
-  Serial.begin(115200);
-  delay(4000);
-  WiFi.begin(ssid, password);
-  
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(1000);
-    Serial.println("Connecting to WiFi..");
-  }
-  
-  Serial.println("Connected to the WiFi network");
-  
-}
-  
-void loop() {
-  
+void httpsendrequest()
+{
   if ((WiFi.status() == WL_CONNECTED)) { //Check the current connection status
   
     HTTPClient http;
@@ -52,5 +36,27 @@ void loop() {
   }
   
   delay(10000);
+  
+  }
+  
+void setup() {
+  
+  Serial.begin(115200);
+  delay(4000);
+  WiFi.begin(ssid, password);
+  
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.println("Connecting to WiFi..");
+  }
+  
+  Serial.println("Connected to the WiFi network");
+  
+}
+  
+void loop() {
+  
+  httpsendrequest();
+
   
 }
